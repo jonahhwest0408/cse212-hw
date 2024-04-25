@@ -4,9 +4,17 @@ public class Program
 {
     static void Main(string[] args)
     {
-        // This project is here for you to use as a "Sandbox" to play around
-        // with any code or ideas you have that do not directly apply to
-        // one of your projects.
+        var numbers = new List<int>();
+        List<string> myList = new List<string>();
+
+        numbers.Add(1);
+        numbers.Add(2);
+        numbers.Add(3);
+
+        foreach(var item in myList)
+        {
+            Console.WriteLine(myList);
+        }
 
         Console.WriteLine("Hello Sandbox World!");
     }
