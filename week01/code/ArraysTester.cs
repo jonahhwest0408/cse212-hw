@@ -58,13 +58,29 @@ public static class ArraysTester {
     /// </summary>
     private static void RotateListRight(List<int> data, int amount)
     {
-        // Calculate the new index for each element
+        // Check if rotation amount is valid
+        if (amount <= 0 || amount > data.Count)
+        {
+            throw new ArgumentException("Invalid rotation amount");
+        }
+
+        // Create a new list to store the rotated elements
+        List<int> rotatedList = new List<int>(data.Count);
+
+        // Calculate the index from where rotation will start
+        int rotateIndex = data.Count - amount;
+
+        // Copy the elements to the rotated list
         for (int i = 0; i < data.Count; i++)
         {
-            int newIndex = (i + amount) % data.Count;
-            int temp = data[i];
-            data[i] = data[newIndex];
-            data[newIndex] = temp;
+            rotatedList.Add(data[(rotateIndex + i) % data.Count]);
+        }
+
+        // Copy the rotated elements back to the original list
+        for (int i = 0; i < data.Count; i++)
+        {
+            data[i] = rotatedList[i];
         }
     }
+
 }
