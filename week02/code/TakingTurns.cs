@@ -15,7 +15,7 @@
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: None
 
         Console.WriteLine("---------");
 
@@ -38,7 +38,7 @@
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: After adding "George" to the queue, "George" should be dequeued and enqueued back as per the requirement. However, the current implementation doesn't do that.
 
         Console.WriteLine("---------");
 
@@ -56,7 +56,7 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: None
 
         Console.WriteLine("---------");
 
@@ -73,7 +73,7 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: When "Tim" with infinite turns (-3) is dequeued, they should be enqueued back according to the requirement. However, the current implementation doesn't handle this correctly.
 
         Console.WriteLine("---------");
 
@@ -83,6 +83,6 @@
         Console.WriteLine("Test 5");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
+        // Defect(s) Found: The error message should be displayed when trying to get the next person from an empty queue. However, there's a defect in the implementation which prevents this error message from displaying.
     }
 }
