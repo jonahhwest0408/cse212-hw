@@ -111,6 +111,25 @@ public static class SetsAndMapsTester {
         // To display the pair correctly use something like:
         // Console.WriteLine($"{word} & {pair}");
         // Each pair of words should displayed on its own line.
+        HashSet<string> seenPairs = new HashSet<string>();
+        bool pairsFound = false;
+
+        foreach (string word in words) {
+            string pair = GetSymmetricPair(word);
+
+            if (seenPairs.Contains(pair)) {
+                Console.WriteLine($"{word} & {pair}");
+            } else {
+                seenPairs.Add(word);
+            }
+
+        }
+    }
+
+    private static string GetSymmetricPair(string word) {
+        char[] charArray = word.ToCharArray();
+        Array.Reverse(charArray);
+        return new string(charArray);
     }
 
     /// <summary>
@@ -122,16 +141,24 @@ public static class SetsAndMapsTester {
     /// the 4th column of the file.  There is no header row in the
     /// file.
     /// </summary>
-    /// <param name="filename">The name of the file to read</param>
+    /// <param name="filename">census.txt</param>
     /// <returns>fixed array of divisors</returns>
     /// #############
     /// # Problem 2 #
     /// #############
     private static Dictionary<string, int> SummarizeDegrees(string filename) {
         var degrees = new Dictionary<string, int>();
-        foreach (var line in File.ReadLines(filename)) {
+        foreach (var line in File.ReadLines(@"C:\path\to\your\file\census.txt")) {
             var fields = line.Split(",");
             // Todo Problem 2 - ADD YOUR CODE HERE
+            if (fields.Length >= 4) { // Ensure the line has enough fields
+                var degree = fields[3].Trim(); // Extract the degree information
+                if (degrees.ContainsKey(degree)) {
+                    degrees[degree]++;
+                } else {
+                    degrees[degree] = 1;
+                }
+            }
         }
 
         return degrees;
