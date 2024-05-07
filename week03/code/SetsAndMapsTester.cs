@@ -148,7 +148,7 @@ public static class SetsAndMapsTester {
     /// #############
     private static Dictionary<string, int> SummarizeDegrees(string filename) {
         var degrees = new Dictionary<string, int>();
-        foreach (var line in File.ReadLines(@"C:\path\to\your\file\census.txt")) {
+        foreach (var line in File.ReadLines(@"C:\Users\Jonah West\Documents\cse212-hw\week03\code\census.txt")) {
             var fields = line.Split(",");
             // Todo Problem 2 - ADD YOUR CODE HERE
             if (fields.Length >= 4) { // Ensure the line has enough fields
@@ -185,7 +185,27 @@ public static class SetsAndMapsTester {
     /// #############
     private static bool IsAnagram(string word1, string word2) {
         // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+
+        if (string.IsNullOrEmpty(word1) || string.IsNullOrEmpty(word2))
+            return false;
+
+        word1 = word1.ToLower().Replace(" ", "");
+        word2 = word2.ToLower().Replace(" ", "");
+
+        if (word1.Length != word2.Length)
+            return false;
+
+        char[] charArray1 = word1.ToCharArray();
+        char[] charArray2 = word2.ToCharArray();
+        Array.Sort(charArray1);
+        Array.Sort(charArray2);
+
+        for (int i = 0; i < charArray1.Length; i++) {
+            if (charArray1[i] != charArray2[i])
+                return false;
+        }
+
+        return true;
     }
 
     /// <summary>

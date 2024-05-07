@@ -29,7 +29,16 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveLeft() {
-        // FILL IN CODE
+        if (_mazeMap.TryGetValue((_currX, _currY), out var directions)) {
+            if (directions[0]) {
+                _currX--; 
+                Console.WriteLine("Moved left");
+            } else {
+                Console.WriteLine("Can't go that way!");
+            }
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -37,7 +46,16 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveRight() {
-        // FILL IN CODE
+        if (_mazeMap.TryGetValue((_currX, _currY), out var directions)) {
+            if (directions[1]) {
+                _currX++; 
+                Console.WriteLine("Moved right");
+            } else {
+                Console.WriteLine("Can't go that way!");
+            }
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -45,7 +63,16 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveUp() {
-        // FILL IN CODE
+        if (_mazeMap.TryGetValue((_currX, _currY), out var directions)) {
+            if (directions[2]) {
+                _currY--; // Adjust for moving left in the maze
+                Console.WriteLine("Moved up");
+            } else {
+                Console.WriteLine("Can't go that way!");
+            }
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -53,7 +80,16 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveDown() {
-        // FILL IN CODE
+        if (_mazeMap.TryGetValue((_currX, _currY), out var directions)) {
+            if (directions[3]) {
+                _currY++; // Adjust for moving right in the maze
+                Console.WriteLine("Moved down");
+            } else {
+                Console.WriteLine("Can't go that way!");
+            }
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     public void ShowStatus() {
